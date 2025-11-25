@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 14:43:16 by kesaitou          #+#    #+#              #
-#    Updated: 2025/11/25 22:52:29 by kesaitou         ###   ########.fr        #
+#    Updated: 2025/11/25 23:21:11 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LDFLAGS = -L $(LIBDIR)
 LDLIBS = -lft
 
 
-MAND_SRCS = 
+MAND_SRCS =
 
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
@@ -38,7 +38,7 @@ $(NAME):$(MAND_OBJS) $(LIBFT)
 	$(CC) $(MAND_OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 bonus: all
-	
+
 %.o : %.c
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
