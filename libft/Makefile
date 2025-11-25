@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 16:54:22 by kesaitou          #+#    #+#              #
-#    Updated: 2025/11/25 22:54:55 by kesaitou         ###   ########.fr        #
+#    Updated: 2025/11/25 23:21:32 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,19 +57,23 @@ SRCS := \
     $(addprefix $(PRINTF_DIR)/, $(PRINTF_SRCS)) \
     $(addprefix $(GNL_DIR)/, $(GNL_SRCS))
 
+HEADER = includes/ft_printf.h\
+		 includes/get_next_line.h\
+		 includes/libft.h\
+
 
 OBJS := $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(HEADER)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 clean:
-	rm -f $(OBJS) 
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
