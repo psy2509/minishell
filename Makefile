@@ -6,12 +6,12 @@
 #    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 14:43:16 by kesaitou          #+#    #+#              #
-#    Updated: 2025/11/25 22:52:29 by kesaitou         ###   ########.fr        #
+#    Updated: 2025/11/28 17:57:11 by kesaitou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 
