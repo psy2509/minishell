@@ -43,7 +43,6 @@ typedef struct s_tree
 	char			**argv;
 	char			*redirect;
 	t_tree_type		state;
-
 }					t_tree;
 
 typedef struct s_pipe

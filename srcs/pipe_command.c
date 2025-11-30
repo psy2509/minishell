@@ -13,11 +13,29 @@
 #include "../includes/pipex.h"
 #include "../includes/commands.h"
 
+int	fd_manage(t_pipe *info)
+{
+	if (info->oldfd[0] != -1 && info->oldfd[1] != -1)
+	{
+		close(info->oldfd[0]);
+		close(info->oldfd[1]);
+	}
+	else if (pipe(info->newfd) == FAIL)
+		return (FAIL);
+	info->oldfd[0] = info->newfd[0];
+	info->oldfd[1] = info->newfd[1];
+	if (pipe(info->newfd) == FAIL)
+		return (FAIL);
+	dup2(info->oldfd[0], 0);
+	dup2(info->newfd[1], 1);
+	return (SUCCESS);
+}
+
 static int	execve_cmds(char **path, char **envp, char **cmd)
 {
 	int		i;
 	char	*full_path;
-
+	
 	i = 0;
 	if (!cmd)
 		return (FAIL);
@@ -63,7 +81,28 @@ void	manage_pipe(t_tree *branch, t_pipe info, pid_t pid)
 		return ;
 	else if (pid == 0)
 		tree_operator(branch->left, info, pid);
-	if ()
+	if (branch->right->state == PIPE)
+		tree_operator(branch->right, info, pid);
+	pid = fork();
+	if (pid < 0)
+		return ;
+	else if (pid == 0)
+		tree_operator(branch->right, info, pid);
+	return ;
+}
+
+void	manage_cmd(t_tree *branch, t_pipe info, pid_t pid)
+{
+	if (pid != 0)
+		return ;
+	if (fd_manage(*info) == FAIL)
+		exit(1);
+	execve_cmds(info.path);
+}
+
+void	manage_my_cmd(t_tree *branch, t_pipe info, pid_t pid)
+{
+	execve_my_cmds(branch->argv);
 }
 
 void	tree_operator(t_tree *branch, t_pipe info, pid_t pid)
@@ -106,24 +145,6 @@ void	tree_operator(t_tree *branch, t_pipe info, pid_t pid)
 
 
 
-//int	fd_manage(t_pipe *info, int i)
-//{
-//	if (i == FIRST)
-//	if (pipe(info->newfd) == FAIL)
-//		return (FAIL);
-//	if (FIRST < i)
-//	{
-//		close(info->oldfd[0]);
-//		close(info->oldfd[1]);
-//	}
-//	info->oldfd[0] = info->newfd[0];
-//	info->oldfd[1] = info->newfd[1];
-//	if (pipe(info->newfd) == FAIL)
-//		return (FAIL);
-//	dup2(info->oldfd[0], 0);
-//	dup2(info->newfd[1], 1);
-//	return (SUCCESS);
-//}
 
 //int	proc_operate(t_pipe info)
 //{
