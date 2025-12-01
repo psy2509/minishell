@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_util.c                                        :+:      :+:    :+:   */
+/*   util_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 02:13:45 by natakaha          #+#    #+#             */
-/*   Updated: 2025/11/29 13:59:46 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/02 06:53:58 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-//void	error_exit(char **path, char *str, int errno)
-//{
-//	free_path(path);
-//	perror(str);
-//	exit(errno);
-//}
+void	error_exit(char **path, char *str, int errno)
+{
+	free_path(path);
+	perror(str);
+	exit(errno);
+}
 
 //void	wait_exit(pid_t pid[], t_pipe info)
 //{
@@ -61,7 +61,7 @@
 //	int		count;
 
 //	line = NULL;
-//	while (true)
+//	while (1)
 //	{
 //		count = read(fd, tmp, 100);
 //		if (count <= 0)

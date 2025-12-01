@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_pipe.c                                        :+:      :+:    :+:   */
+/*   util_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naoki <naoki@student.42.fr>                #+#  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-01 03:43:18 by naoki             #+#    #+#             */
-/*   Updated: 2025-12-01 03:43:18 by naoki            ###   ########.fr       */
+/*   Created: 2025/12/01 03:43:18 by naoki             #+#    #+#             */
+/*   Updated: 2025/12/02 07:30:30 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipe.h"
+#include "../includes/pipex.h"
 
-static	t_pid	*pid_new(pid_t pid)
+t_pid	*pid_new(pid_t pid)
 {
 	t_pid	*plist;
 
@@ -23,14 +23,14 @@ static	t_pid	*pid_new(pid_t pid)
 	return (plist);
 }
 
-void	pid_add_back(pid_t **plist, pid_t pid)
+void	pid_add_back(t_pid **plist, pid_t pid)
 {
 	t_pid	*tmp;
-	
+
 	if (!*plist)
 	{
 		*plist = pid_new(pid);
-		return ;		
+		return ;
 	}
 	tmp = *plist;
 	while (tmp->next)
@@ -38,7 +38,7 @@ void	pid_add_back(pid_t **plist, pid_t pid)
 	tmp->next = pid_new(pid);
 	if (!tmp->next)
 	{
-		free_pid(plist);
+		free_pid(*plist);
 		plist = NULL;
 	}
 }

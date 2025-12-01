@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 14:43:16 by kesaitou          #+#    #+#              #
-#    Updated: 2025/11/29 18:11:17 by natakaha         ###   ########.fr        #
+#    Updated: 2025/12/01 22:59:36 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,13 @@ MAND_SRCS = srcs/cmd_echo.c\
 			srcs/cmd_pwd.c\
 			srcs/cmd_cd.c\
 			srcs/readline.c\
-			srcs/pipe_command.c\
-			srcs/pipe_parse.c\
-			srcs/pipe_util.c\
+			srcs/tree_parse.c\
+			srcs/tree_fd.c\
+			srcs/tree_operate.c\
+			srcs/tree_cmd.c\
+			srcs/util_tree.c\
+			srcs/util_error.c\
+
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
 

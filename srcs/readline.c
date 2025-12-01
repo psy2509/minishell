@@ -6,11 +6,11 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:36:49 by natakaha          #+#    #+#             */
-/*   Updated: 2025/11/29 13:29:57 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/01 22:53:11 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/readline.h"
+//#include "../includes/readline.h"
 
 //int main(void)
 //{

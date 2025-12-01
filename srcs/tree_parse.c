@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:33:13 by natakaha          #+#    #+#             */
-/*   Updated: 2025/11/29 13:28:13 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/01 22:41:06 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	find_path(char ***path, char **envp)
 	char	*tmp;
 
 	i = 0;
+	tmp = "tmp";
 	while (envp[i])
 	{
 		if (!ft_strncmp("PATH=", envp[i], 5))
@@ -43,6 +44,8 @@ static int	find_path(char ***path, char **envp)
 		}
 		i++;
 	}
+	if (!tmp)
+		return (FAIL);
 	*path = ft_split(tmp, ':');
 	free(tmp);
 	if (!path)
@@ -81,9 +84,9 @@ t_pipe	correct_info(int argc, char **argv, char **envp)
 	info.argv = argv;
 	info.envp = envp;
 	info.argc = argc;
-	info.newfd[0] = -1;
-	info.newfd[1] = -1;
-	info.oldfd[0] = -1;
-	info.oldfd[1] = -1;
+	info.fd_out[0] = -1;
+	info.fd_out[1] = -1;
+	info.fd_in[0] = -1;
+	info.fd_in[1] = -1;
 	return (info);
 }

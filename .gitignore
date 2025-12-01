@@ -4,3 +4,4 @@
 .gitignore
 *.pdf
 *.txt
+*test.c
