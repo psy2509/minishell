@@ -41,9 +41,16 @@ typedef struct s_tree
 	struct s_tree	*left;
 	struct s_tree	*right;
 	char			**argv;
-	char			*redirect;
+	char			*redirect_in;
+	char			*redirect_out:
 	t_tree_type		state;
 }					t_tree;
+
+typedef struct s_pid
+{
+	int				pid;
+	typedef struct	*next;
+}	t_pid;
 
 typedef struct s_pipe
 {
@@ -51,18 +58,17 @@ typedef struct s_pipe
 	char			**envp;
 	char			**argv;
 	char			**path;
-	int				oldfd[2];
-	int				newfd[2];
+	int				fd_in[2];
+	int				fd_out[2];
+	t_pid			*plist;
 }					t_pipe;
 
 /*parse*/
 t_pipe				correct_info(int argc, char **argv, char **envp);
 void				free_path(char **path);
 
-/*util_comand*/
-void				error_exit(char **path, char *str, int errno);
-char				*get_lines(int fd);
-void				dup2_or_exit(t_pipe info, int fd1, int fd2);
-void				wait_exit(pid_t pid[], t_pipe info);
+/*util_pipe*/
+void				pid_add_back(pid_t **plist, pid_t pid);
+void				free_pid(t_pid *plist);
 
 #endif

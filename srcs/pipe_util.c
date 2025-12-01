@@ -12,29 +12,29 @@
 
 #include "../includes/pipex.h"
 
-void	error_exit(char **path, char *str, int errno)
-{
-	free_path(path);
-	perror(str);
-	exit(errno);
-}
+//void	error_exit(char **path, char *str, int errno)
+//{
+//	free_path(path);
+//	perror(str);
+//	exit(errno);
+//}
 
-void	wait_exit(pid_t pid[], t_pipe info)
-{
-	int	i;
-	int	tmp;
-	int	status;
+//void	wait_exit(pid_t pid[], t_pipe info)
+//{
+//	int	i;
+//	int	tmp;
+//	int	status;
 
-	status = 0;
-	tmp = 0;
-	i = FIRST;
-	while (i <= info.LAST)
-	{
-		waitpid(pid[i], &tmp, 0);
-		status = WEXITSTATUS(tmp);
-		i++;
-	}
-}
+//	status = 0;
+//	tmp = 0;
+//	i = FIRST;
+//	while (i <= info.LAST)
+//	{
+//		waitpid(pid[i], &tmp, 0);
+//		status = WEXITSTATUS(tmp);
+//		i++;
+//	}
+//}
 
 /*get_lines tester*/
 

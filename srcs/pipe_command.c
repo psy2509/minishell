@@ -13,21 +13,30 @@
 #include "../includes/pipex.h"
 #include "../includes/commands.h"
 
+int	open_dup2(t_piep info, t_tree *branch)
+{
+	if (branch->redirect_in)
+	{
+		close(info.fd_in[0]);
+		info->fd_in = open(branch->redirect_in, "")
+	}
+}
+
 int	fd_manage(t_pipe *info)
 {
-	if (info->oldfd[0] != -1 && info->oldfd[1] != -1)
+	if (info->fd_in[0] != -1 && info->fd_in[1] != -1)
 	{
-		close(info->oldfd[0]);
-		close(info->oldfd[1]);
+		close(info->fd_in[0]);
+		close(info->fd_in[1]);
 	}
-	else if (pipe(info->newfd) == FAIL)
+	else if (pipe(info->fd_out) == FAIL)
 		return (FAIL);
-	info->oldfd[0] = info->newfd[0];
-	info->oldfd[1] = info->newfd[1];
-	if (pipe(info->newfd) == FAIL)
+	info->fd_in[0] = info->fd_out[0];
+	info->fd_in[1] = info->fd_out[1];
+	if (pipe(info->fd_out) == FAIL)
 		return (FAIL);
-	dup2(info->oldfd[0], 0);
-	dup2(info->newfd[1], 1);
+	dup2(info->fd_in[0], 0);
+	dup2(info->fd_out[1], 1);
 	return (SUCCESS);
 }
 
@@ -72,15 +81,18 @@ static int	execve_my_cmds(char **cmd)
 		return (SUCCESS);
 }
 
-void	manage_pipe(t_tree *branch, t_pipe info, pid_t pid)
+void	treat_pipe_left(t_tree *branch, t_pipe info, pid_t pid, t_pid **plist)
 {
-	if (pid == 0)
-		exit(0);
 	pid = fork();
 	if (pid < 0)
 		return ;
 	else if (pid == 0)
 		tree_operator(branch->left, info, pid);
+	pid_add_back(plist, pid);
+}
+
+void	treat_pipe_right(t_tree *branch, t_pipe info, pid_t pid, t_pid **plist)
+{
 	if (branch->right->state == PIPE)
 		tree_operator(branch->right, info, pid);
 	pid = fork();
@@ -88,24 +100,34 @@ void	manage_pipe(t_tree *branch, t_pipe info, pid_t pid)
 		return ;
 	else if (pid == 0)
 		tree_operator(branch->right, info, pid);
+	pid_add_back(plist, pid);
+}
+
+void	manage_pipe(t_tree *branch, t_pipe info, pid_t pid, t_pid **plist)
+{
+	if (pid == 0)
+		exit(0);
+	treat_pipe_left(branch, info, pid);
+	treat_pipe_right(branch, info, pid);
 	return ;
 }
 
-void	manage_cmd(t_tree *branch, t_pipe info, pid_t pid)
+void	manage_cmd(t_tree *branch, t_pipe info, pid_t pid, t_pid **plist)
 {
 	if (pid != 0)
 		return ;
+	open_dup2(info, branch);
 	if (fd_manage(*info) == FAIL)
 		exit(1);
 	execve_cmds(info.path);
 }
 
-void	manage_my_cmd(t_tree *branch, t_pipe info, pid_t pid)
+void	manage_my_cmd(t_tree *branch, t_pipe info, pid_t pid, t_pid **plist)
 {
 	execve_my_cmds(branch->argv);
 }
 
-void	tree_operator(t_tree *branch, t_pipe info, pid_t pid)
+void	tree_operator(t_tree *branch, t_pipe info, pid_t pid, t_pid **plist)
 {
 	if (branch->state == PIPE)
 		manage_pipe(branch, info, pid);
