@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 23:55:44 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/02 23:18:29 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/12/03 03:00:19 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <unistd.h>
 
 # define SUCCESS 1
-# define FAIL -1
+# define FAILUER -1
 # define FIRST 2
 # define LAST argc - 2
 
