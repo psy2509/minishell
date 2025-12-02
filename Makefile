@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/30 14:43:16 by kesaitou          #+#    #+#              #
-#    Updated: 2025/12/01 22:59:36 by natakaha         ###   ########.fr        #
+#    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
+#    Updated: 2025/12/02 23:21:36 by kesaitou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-
+INCS = includes
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
@@ -32,6 +32,13 @@ MAND_SRCS = srcs/cmd_echo.c\
 			srcs/tree_cmd.c\
 			srcs/util_tree.c\
 			srcs/util_error.c\
+			srcs/lexer.c\
+			srcs/lexer_utils.c\
+			srcs/token_list_utils.c\
+			srcs/char_list_utils.c\
+
+
+			
 
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)

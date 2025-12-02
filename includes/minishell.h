@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands.h                                         :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 17:58:04 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/02 23:24:03 by kesaitou         ###   ########.fr       */
+/*   Created: 2025/11/26 12:40:22 by kesaitou          #+#    #+#             */
+/*   Updated: 2025/12/02 23:17:52 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMANDS_H
-# define COMMANDS_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-# define SUCCESS 1
-# define FAIL -1
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/get_next_line.h"
+# include "../libft/includes/libft.h"
 
-#include "minishell.h"
-# include "pipex.h"
-# include "readline.h"
-# include <stdlib.h>
 
-void	echo(char **cmd);
-void	pwd(char **cmd);
-void	cd(char **cmd);
+
 
 
 #endif

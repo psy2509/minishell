@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 01:57:21 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/11/17 04:11:36 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/11/29 12:38:20 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		*p1 = *p2;
-		p1++;
-		p2++;
+		p1[i] = p2[i];
 		i++;
 	}
 	return (dest);
