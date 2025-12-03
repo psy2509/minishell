@@ -45,7 +45,7 @@ typedef struct 			s_flist
 {
 	t_file_type			f_type;
 	char				*file;
-	struct s_filelist	*next;
+	struct s_flist	*next;
 }			t_flist;
 
 typedef struct s_tree

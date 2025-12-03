@@ -35,9 +35,7 @@ static int	redirect_out_open_dup2(t_pipe *info, t_flist *flist)
 
 static int	append_open_dup2(t_pipe *info, t_flist *flist)
 {
-	if (!flist->append)
-		return (SUCCESS);
-	info->fd_out[1] = open(flist->append, O_WRONLY | O_CREAT | O_APPEND,
+	info->fd_out[1] = open(flist->file, O_WRONLY | O_CREAT | O_APPEND,
 			0644);
 	if (info->fd_out[1] < 0)
 		return (FAILUER);
@@ -48,17 +46,17 @@ static int	append_open_dup2(t_pipe *info, t_flist *flist)
 
 int	manage_redirect_module(t_pipe *info, t_flist *flist)
 {
-	if (flist->state == INFILE)
+	if (flist->f_type == INFILE)
 	{
 		if (redirect_in_open_dup2(info, flist) == FAILUER)
 			return (FAILUER);
 	}
-	else if (flist->state == OUTFILE)
+	else if (flist->f_type == OUTFILE)
 	{
 		if (redirect_out_open_dup2(info, flist) == FAILUER)
 			return (FAILUER);
 	}
-	else if (flist->state == APPEND)
+	else if (flist->f_type == APPEND)
 	{
 		if (append_open_dup2(info, flist) == FAILUER)
 			return (FAILUER);

@@ -37,6 +37,7 @@ t_tree	*tree_new(char **cmd, char *fname, t_file_type ftype, t_type btype)
 	node->argv = cmd;
 	node->flist->f_type = ftype;
 	node->flist->file = fname;
+	node->flist->next = NULL;
 	node->b_type = btype;
 	return (node);
 }
