@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getinfo.c                                          :+:      :+:    :+:   */
+/*   getsize.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 17:54:28 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/05 18:46:14 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/05 19:09:25 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,23 @@ int	count_cmd(t_token *lst)
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+t_token	*token_move(t_token *lst, int n)
+{
+	int		i;
+	t_token	*tmp;
+
+	if (!lst)
+		return (NULL);
+	i = 0;
+	tmp = lst;
+	while (i <= n)
+	{
+		if (!tmp)
+			return (NULL);
+		tmp = tmp->next;
+		i++;
+	}
+	return (tmp);
 }

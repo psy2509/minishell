@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 12:25:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/02 23:22:47 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/12/05 23:09:10 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    append_char(t_char_list **list, char c)
 
     new_node = malloc(sizeof(t_char_list));
     if (!new_node)
-        return ; 
+        return ;
     new_node->c = c;
     new_node->next = NULL;
 

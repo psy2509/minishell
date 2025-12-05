@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:54:42 by naoki             #+#    #+#             */
-/*   Updated: 2025/12/05 13:27:34 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/05 20:24:16 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ static int	treat_pipe_left(t_tree *branch, t_pipe *info, pid_t pid)
 		pid_add_back(&(info->plist), pid);
 	if (pid == 0)
 	{
-		close(info->fd_out[0]);
+		if (info->fd_in[1] >= 0)
+		{
+			close(info->fd_in[1]);
+			info->fd_in[1] = -1;
+		}
 		tree_operator(branch->left, info, pid);
 	}
 	return (SUCCESS);
