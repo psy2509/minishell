@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 15:27:36 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/05 16:28:06 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:43:51 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ t_token_type is_token_type(char *c)
 {
 	if (*c == '|')
 		return (TOKEN_PIPE);
-	else if (*c == '<')
-		return (TOKEN_REDIRECT_IN);
-	else if (*c == '>')
-		return (TOKEN_REDIRECT_OUT);
 	else if (*c == '<' && *(c + 1) == '<')
 		return (TOKEN_HEREDOC);
 	else if (*c == '>' && *(c + 1) == '>')
 		return (TOKEN_APPEND);
+	else if (*c == '<')
+		return (TOKEN_REDIRECT_IN);
+	else if (*c == '>')
+		return (TOKEN_REDIRECT_OUT);
 	else if (*c == ' ')
 		return (SPACE);
 	return (TOKEN_WORD);
@@ -101,6 +101,8 @@ char	**split_section(char *str)
 	{
 		n = section_len(str);
 		splitted[j] = ft_strndup(str, n);
+		if (!splitted[j])
+			return (free_cmd(splitted), NULL);
 		str += n + 1;
 		j++;
 	}

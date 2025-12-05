@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 23:55:44 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/03 03:00:19 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:14:05 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef enum e_file_type
 	OUTFILE,
 	APPEND,
 	INFILE,
+	HEARDOC,
 }			t_file_type;
 
 typedef struct 			s_flist
@@ -84,7 +85,7 @@ void				free_path(char **path);
 /*exec2_cmd*/
 void				manage_cmd(t_tree *branch, t_pipe *info, pid_t pid);
 	void				manage_my_cmd(t_tree *branch, t_pipe *info, pid_t pid);
-		
+
 /*exec3_pipe*/
 void				manage_pipe(t_tree *branch, t_pipe *info, pid_t pid);
 

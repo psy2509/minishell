@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 16:09:37 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/05 16:39:33 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:44:49 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,44 @@ int	word_len(char *str)
 	return (i);
 }
 
+static int	is_ifs(int c)
+{
+	return (c == ' ' || c == '\n' || c == '\t');
+}
+
+int	ifs_len(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && is_ifs(str[i]))
+		i++;
+	return (i);
+}
+
 int	count_redirect(char *str)
 {
 	int	i;
-	int	tmp;
 	int	count;
 
-
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (is_token_type(&str[i]) != TOKEN_WORD)
+		{
+			if (is_token_type(&str[i]) == TOKEN_APPEND
+				|| is_token_type(&str[i]) == TOKEN_HEREDOC)
+				i++;
+			count++;
+			i++;
+		}
+		i += ifs_len(&str[i]);
+		i += word_len(&str[i]);
+		i += ifs_len(&str[i]);
+	}
+	return (count);
 }
-
 
 //t_flist	*make_flist(char *str)
 //{
@@ -63,10 +92,10 @@ int	count_redirect(char *str)
 
 //}
 
-int main(void)
-{
-	char *str;
+//int main(void)
+//{
+//	char *str;
 
-	str = "abc\"|<\"<d e";
-	printf("%s, %d\n",str, word_len(str));
-}
+//	str = ">>\\c\"|<\" <d <<e<<a>>c<<";
+//	printf("%s, %d\n",str, count_redirect(str));
+//}

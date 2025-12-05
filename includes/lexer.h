@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 11:55:34 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/05 16:33:12 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:47:21 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_char_list				*c_lstlast(t_char_list *lst);
 size_t					c_lstsize(t_char_list *lst);
 void					c_lstclear(t_char_list **lst, void (*del)(void *));
 
-/*batakaha_lexer*/
+/*batakaha_test*/
 t_state					is_quote(char c);
 int						quote_len(char *str);
 t_token_type 			is_token_type(char *c);
