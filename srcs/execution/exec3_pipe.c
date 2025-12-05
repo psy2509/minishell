@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_pipe.c                                        :+:      :+:    :+:   */
+/*   exec3_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naoki <naoki@student.42.fr>                #+#  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-03 08:54:42 by naoki             #+#    #+#             */
-/*   Updated: 2025-12-03 08:54:42 by naoki            ###   ########.fr       */
+/*   Created: 2025/12/03 08:54:42 by naoki             #+#    #+#             */
+/*   Updated: 2025/12/05 20:24:16 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@ static int	treat_pipe_left(t_tree *branch, t_pipe *info, pid_t pid)
 	pid = fork();
 	if (pid < 0)
 		return (FAILUER);
+	if (pid > 0)
+		pid_add_back(&(info->plist), pid);
 	if (pid == 0)
+	{
+		if (info->fd_in[1] >= 0)
+		{
+			close(info->fd_in[1]);
+			info->fd_in[1] = -1;
+		}
 		tree_operator(branch->left, info, pid);
-	pid_add_back(&(info->plist), pid);
+	}
 	return (SUCCESS);
 }
 
@@ -29,15 +37,22 @@ static int	treat_pipe_right(t_tree *branch, t_pipe *info, pid_t pid)
 {
 	if (branch->right->b_type == PIPE)
 		tree_operator(branch->right, info, pid);
-	if (pipe_update(info->fd_in, info->fd_out) == FAILUER)
+	if (pipe_terminate(info->fd_in, info->fd_out) == FAILUER)
 		return (FAILUER);
 	pid = fork();
 	if (pid < 0)
 		return (FAILUER);
+	if (pid > 0)
+	{
+		close_fd_in_out(&(info->fd_in[0]), &(info->fd_in)[1]);
+		close_fd_in_out(&(info->fd_out[0]), &(info->fd_out)[1]);
+		pid_add_back(&(info->plist), pid);
+	}
 	if (pid == 0)
+	{
+		close(info->fd_in[1]);
 		tree_operator(branch->right, info, pid);
-	close(info->fd_in[1]);
-	pid_add_back(&(info->plist), pid);
+	}
 	return (SUCCESS);
 }
 

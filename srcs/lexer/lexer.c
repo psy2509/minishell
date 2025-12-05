@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 11:22:47 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/02 23:22:36 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/12/05 21:01:01 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,58 +152,58 @@ void	my_lex(char *input, t_token **token_list)
 	}
 }
 
-int	main(void)
-{
-	t_token	*token;
-	char	*test1;
-	char	*test2;
-	char	*test3;
-	char	*test4;
-	t_token	*token2;
-	t_token	*token3;
-	t_token	*token4;
+//int	main(void)
+//{
+//	t_token	*token;
+//	char	*test1;
+//	char	*test2;
+//	char	*test3;
+//	char	*test4;
+//	t_token	*token2;
+//	t_token	*token3;
+//	t_token	*token4;
 
-	token = NULL;
-	test1 = "<<infile ls -l|cat -e > file1";
-	test2 = "<<infile ls -l|cat -e>>file1";
-	test3 = "awk '{print $1}'";
-	test4 = "echo \"$USER\" \'$USER\'";
-	printf("%s\n", test1);
-	my_lex(test1, &token);
-	while (token)
-	{
-		printf(" WORD %s : TYPE ", token->token);
-		printf("%u\n", token->type);
-		token = token->next;
-	}
-	token2 = NULL;
-	my_lex(test2, &token2);
-	printf("%s\n", test2);
-	while (token2)
-	{
-		printf(" WORD %s : TYPE ", token2->token);
-		printf("%u\n", token2->type);
-		token2 = token2->next;
-	}
-	token3 = NULL;
-	my_lex(test3, &token3);
-	printf("%s\n", test3);
-	while (token3)
-	{
-		printf(" WORD %s : TYPE ", token3->token);
-		printf("%u\n", token3->type);
-		token3 = token3->next;
-	}
-	token4 = NULL;
-	my_lex(test4, &token4);
-	printf("%s\n", test4);
-	while (token4)
-	{
-		printf(" WORD %s : TYPE ", token4->token);
-		printf("%u\n", token4->type);
-		token4 = token4->next;
-	}
-}
+//	token = NULL;
+//	test1 = "<<infile ls -l|cat -e > file1";
+//	test2 = "<<infile ls -l|cat -e>>file1";
+//	test3 = "awk '{print $1}'";
+//	test4 = "echo \"$USER\" \'$USER\'";
+//	printf("%s\n", test1);
+//	my_lex(test1, &token);
+//	while (token)
+//	{
+//		printf(" WORD %s : TYPE ", token->token);
+//		printf("%u\n", token->type);
+//		token = token->next;
+//	}
+//	token2 = NULL;
+//	my_lex(test2, &token2);
+//	printf("%s\n", test2);
+//	while (token2)
+//	{
+//		printf(" WORD %s : TYPE ", token2->token);
+//		printf("%u\n", token2->type);
+//		token2 = token2->next;
+//	}
+//	token3 = NULL;
+//	my_lex(test3, &token3);
+//	printf("%s\n", test3);
+//	while (token3)
+//	{
+//		printf(" WORD %s : TYPE ", token3->token);
+//		printf("%u\n", token3->type);
+//		token3 = token3->next;
+//	}
+//	token4 = NULL;
+//	my_lex(test4, &token4);
+//	printf("%s\n", test4);
+//	while (token4)
+//	{
+//		printf(" WORD %s : TYPE ", token4->token);
+//		printf("%u\n", token4->type);
+//		token4 = token4->next;
+//	}
+//}
 
 /*
 memo

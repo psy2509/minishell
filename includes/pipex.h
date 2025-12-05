@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 23:55:44 by natakaha          #+#    #+#             */
-/*   Updated: 2025/12/03 03:00:19 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:14:05 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ typedef enum e_file_type
 	OUTFILE,
 	APPEND,
 	INFILE,
+	HEARDOC,
 }			t_file_type;
 
 typedef struct 			s_flist
 {
 	t_file_type			f_type;
 	char				*file;
-	struct s_filelist	*next;
+	struct s_flist	*next;
 }			t_flist;
 
 typedef struct s_tree
@@ -84,7 +85,7 @@ void				free_path(char **path);
 /*exec2_cmd*/
 void				manage_cmd(t_tree *branch, t_pipe *info, pid_t pid);
 	void				manage_my_cmd(t_tree *branch, t_pipe *info, pid_t pid);
-		
+
 /*exec3_pipe*/
 void				manage_pipe(t_tree *branch, t_pipe *info, pid_t pid);
 
@@ -105,6 +106,7 @@ void				error_exit(char **path, char *str, int errno);
 
 /*exec_utils3_pipe*/
 int					pipe_update(int	fd_in[2], int fd_out[2]);
+int					pipe_terminate(int	fd_in[2], int fd_out[2]);
 void				close_fd_in_out(int *fd_in, int *fd_out);
 int					dup2_stdin_out(int fd_in, int fd_out);
 int					reset_stdin_out(t_pipe *info);
