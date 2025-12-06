@@ -161,13 +161,6 @@ t_token	*lex_return(char *input)
 	return (token);
 }
 
-//t_token	*get_next_token(char *input)
-//{
-//	static t_token	*token;
-
-//	= lex_return(input);
-//}
-
 //int	main(void)
 //{
 //	t_token	*token;

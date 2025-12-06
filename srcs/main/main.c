@@ -12,21 +12,21 @@
 
 #include "../../includes/readline.h"
 
-int main(int argc, char **argv, char **envp)
-{
-	//char	*line;
-	t_pipe	info;
+//int main(int argc, char **argv, char **envp)
+//{
+//	//char	*line;
+//	t_pipe	info;
 
-	info = correct_info(argc, argv, envp);
-	while (1)
-	{
-		line = readline("minishell$ ");
-		if (!line)
-			return (rl_clear_history(), 0);
-		add_history(line);
-		free(line);
-	}
-}
+//	info = correct_info(argc, argv, envp);
+//	while (1)
+//	{
+//		line = readline("minishell$ ");
+//		if (!line)
+//			return (rl_clear_history(), 0);
+//		add_history(line);
+//		free(line);
+//	}
+//}
 
 /*tester*/
 

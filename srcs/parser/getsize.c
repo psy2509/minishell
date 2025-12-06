@@ -19,7 +19,7 @@ int	cmd_whole_size(t_token *lst)
 
 	tmp = lst;
 	i = 0;
-	while (tmp && tmp->type != PIPE)
+	while (tmp && tmp->type != TOKEN_PIPE)
 	{
 		i++;
 		tmp = tmp->next;
@@ -34,7 +34,7 @@ int	redirect_size(t_token *lst)
 
 	tmp = lst;
 	i = 0;
-	while (tmp && tmp->type != PIPE)
+	while (tmp && tmp->type != TOKEN_PIPE)
 	{
 		if (TOKEN_REDIRECT_IN <= tmp->type && tmp->type <= TOKEN_APPEND)
 			i++;
@@ -55,7 +55,7 @@ int	count_cmd(t_token *lst)
 
 	if (!lst)
 		return (0);
-	if (lst->type == PIPE)
+	if (lst->type == TOKEN_PIPE)
 		return (ERROR);
 	tmp = lst;
 	i = 1;
@@ -92,3 +92,4 @@ t_token	*token_move(t_token *lst, int n)
 	}
 	return (tmp);
 }
+
