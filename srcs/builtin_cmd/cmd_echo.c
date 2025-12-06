@@ -6,12 +6,11 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 17:49:23 by natakaha          #+#    #+#             */
-/*   Updated: 2025/11/29 16:00:50 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/06 06:22:51 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/commands.h"
-#include "../../includes/pipex.h"
 
 static void	echo_opn(char **cmd)
 {

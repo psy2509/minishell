@@ -6,12 +6,11 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 01:23:57 by natakaha          #+#    #+#             */
-/*   Updated: 2025/11/29 16:00:40 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/06 06:23:05 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/commands.h"
-#include "../../includes/pipex.h"
 
 void	cd(char **cmd)
 {

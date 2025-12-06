@@ -6,28 +6,28 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 12:25:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/05 23:09:10 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/06 06:20:10 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
 
-void	buff_add_buck(t_char_list **char_list, t_char_list *new_char_list)
-{
-	t_char_list	*current;
+//void	buff_add_buck(t_char_list **char_list, t_char_list *new_char_list)
+//{
+//	t_char_list	*current;
 
-	if (!char_list)
-		return ;
-	if (!*char_list)
-		*char_list = new_char_list;
-	else
-	{
-		current = *char_list;
-		while (current ->next)
-			current = current ->next;
-		current ->next = new_char_list;
-	}
-}
+//	if (!char_list)
+//		return ;
+//	if (!*char_list)
+//		*char_list = new_char_list;
+//	else
+//	{
+//		current = *char_list;
+//		while (current ->next)
+//			current = current ->next;
+//		current ->next = new_char_list;
+//	}
+//}
 
 void    append_char(t_char_list **list, char c)
 {
@@ -41,9 +41,7 @@ void    append_char(t_char_list **list, char c)
     new_node->next = NULL;
 
     if (!*list)
-    {
         *list = new_node;
-    }
     else
     {
         temp = *list;
@@ -51,6 +49,21 @@ void    append_char(t_char_list **list, char c)
             temp = temp->next;
         temp->next = new_node;
     }
+}
+
+t_char_list	*string_to_list(char *str)
+{
+	t_char_list	*list;
+
+	list = NULL;
+	if (!str)
+		return (NULL);
+	while (*str)
+	{
+		append_char(&list, *str);
+		str++;
+	}
+	return (list);
 }
 
 char *list_to_string(t_char_list **list)

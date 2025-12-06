@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 11:55:34 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/05 17:47:21 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/06 00:14:59 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,6 @@ t_token					*t_lstlast(t_token *lst);
 t_char_list				*c_lstlast(t_char_list *lst);
 size_t					c_lstsize(t_char_list *lst);
 void					c_lstclear(t_char_list **lst, void (*del)(void *));
-
-/*batakaha_test*/
-t_state					is_quote(char c);
-int						quote_len(char *str);
-t_token_type 			is_token_type(char *c);
-int 					count_section(char *str);
-int						section_len(char *str);
-char					**split_section(char *str);
+void					my_lex(char *input, t_token **token_list);
 
 # endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 12:23:28 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/02 23:22:19 by kesaitou         ###   ########.fr       */
+/*   Updated: 2025/12/05 23:28:25 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ size_t	t_lstsize(t_token *lst)
 }
 
 /*lexer用に改造した*/
-t_token	*t_lstnew(char *token)
-{
-	t_token	*new_elem;
+//t_token	*t_lstnew(char *token)
+//{
+//	t_token	*new_elem;
 
-	new_elem = malloc(sizeof(t_token));
-	if (!new_elem)
-		return (NULL);
-	new_elem ->type = TOKEN_EOF;
-	new_elem->token = token;
-	new_elem->next = NULL;
-	return (new_elem);
-}
+//	new_elem = malloc(sizeof(t_token));
+//	if (!new_elem)
+//		return (NULL);
+//	new_elem ->type = TOKEN_EOF;
+//	new_elem->token = token;
+//	new_elem->next = NULL;
+//	return (new_elem);
+//}
 
 t_token	*t_lstlast(t_token *lst)
 {

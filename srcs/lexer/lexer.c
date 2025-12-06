@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 11:22:47 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/12/05 21:01:01 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/06 06:20:34 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,22 @@ void	my_lex(char *input, t_token **token_list)
 	}
 }
 
+t_token	*lex_return(char *input)
+{
+	t_token	*token;
+
+	token = NULL;
+	my_lex(input, &token);
+	return (token);
+}
+
+//t_token	*get_next_token(char *input)
+//{
+//	static t_token	*token;
+
+//	= lex_return(input);
+//}
+
 //int	main(void)
 //{
 //	t_token	*token;
@@ -167,7 +183,7 @@ void	my_lex(char *input, t_token **token_list)
 //	test1 = "<<infile ls -l|cat -e > file1";
 //	test2 = "<<infile ls -l|cat -e>>file1";
 //	test3 = "awk '{print $1}'";
-//	test4 = "echo \"$USER\" \'$USER\'";
+//	test4 = "cat 'abc''abc' | cat";
 //	printf("%s\n", test1);
 //	my_lex(test1, &token);
 //	while (token)

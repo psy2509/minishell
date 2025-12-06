@@ -6,12 +6,11 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 00:54:34 by natakaha          #+#    #+#             */
-/*   Updated: 2025/11/29 16:01:00 by natakaha         ###   ########.fr       */
+/*   Updated: 2025/12/06 06:22:59 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/commands.h"
-#include "../../includes/pipex.h"
 
 /* this function must be in parent process*/
 
